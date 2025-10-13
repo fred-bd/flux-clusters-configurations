@@ -1,0 +1,31 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: flux-applications
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  secretRef:
+    name: applications-repo-secret
+  url: ssh://git@github.com/teotonf/flux-applications
+  ignore: |
+    # exclude documentation files
+    **/*.md
+# ---
+# apiVersion: source.toolkit.fluxcd.io/v1
+# kind: GitRepository
+# metadata:
+#   name: flux-applications-coredns-custom
+# spec:
+#   interval: 1m0s
+#   ref:
+#     branch: main
+#   secretRef:
+#     name: applications-repo-secret
+#   url: ssh://git@github.com/teotonf/flux-applications
+#   include:
+#     - repository:
+#         name: flux-applications
+#       fromPath: components/k3s-coredns-custom
+#       toPath: ./flux-applications/coredns-custom

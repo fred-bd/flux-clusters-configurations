@@ -1,0 +1,51 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: applications-group
+spec:
+  interval: 5m
+  retryInterval: 1m
+  path: .
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-applications
+  targetNamespace: flux-system
+  timeout: 1m
+  # dependsOn:
+  #   - name: coredns-change
+  postBuild:
+    substitute:
+      ip_address_range: 192.168.15.12-192.168.15.25
+      vault_address: http://192.168.15.7:8200
+      cluster_name: note-local
+      k8s_secret_name: kubeauth-secrets
+      kubeauth_approle: kubeauth
+      k8s_host: https://192.168.15.11:6443
+      k8s_audiences: https://kubernetes.default.svc.cluster.local
+      cert_issuer_vault_path: bede-apps-com_intermediate/sign/bede-apps-com_intermediate-dot-com
+      domain: bede-apps.com
+      cert_issuer_name: vault-issuer
+      helm_repo_address: http://192.168.15.7:8082
+      helm_repo_secret_name: helm-repo-credentials
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: istio-configs
+# spec:
+#   interval: 5m
+#   retryInterval: 1m
+#   path: ./components/istio
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-applications
+#   timeout: 1m
+#   dependsOn:
+#     - name: applications-group
+#     - name: tools-cert-manager
+#   postBuild:
+#     substitute:
+#       domain: bede-apps.com
+#       cert_issuer_name: vault-issuer
