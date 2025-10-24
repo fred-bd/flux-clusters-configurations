@@ -6,9 +6,7 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  secretRef:
-    name: applications-repo-secret
-  url: ssh://git@github.com/teotonf/flux-applications
+  url: https://github.com/fred-bd/flux-applications.git
   ignore: |
     # exclude documentation files
     **/*.md
