@@ -16,17 +16,17 @@ spec:
   #   - name: coredns-change
   postBuild:
     substitute:
-      ip_address_range: 192.168.15.12-192.168.15.25
-      vault_address: http://192.168.15.10:8200
+      ip_address_range: 192.168.56.30-192.168.56.40
+      vault_address: http://172.29.169.112:8200
       cluster_name: note-local
       k8s_secret_name: kubeauth-secrets
       kubeauth_approle: kubeauth
-      k8s_host: https://192.168.15.10:16443
-      k8s_audiences: https://192.168.15.10
+      k8s_host: https://192.168.56.23:16443
+      k8s_audiences: https://192.168.56.23
       cert_issuer_vault_path: bede-apps-com_intermediate/sign/bede-apps-com_intermediate-dot-com
       domain: bede-apps.com
       cert_issuer_name: vault-issuer
-      helm_repo_address: http://192.168.15.10:8082
+      helm_repo_address: http://172.29.169.112:8082
       helm_repo_secret_name: helm-repo-credentials
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
