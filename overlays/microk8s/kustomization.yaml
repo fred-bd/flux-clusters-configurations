@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: Kustomization
+      name: applications-group
+    patch: |
+      apiVersion: v1
+      kind: all
+      metadata:
+        name: all
+      spec:
+        path: ./overlays/prod
+        postBuild:
+          substitute:
+            istio_platform: microk8s
