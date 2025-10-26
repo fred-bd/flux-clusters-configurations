@@ -22,7 +22,7 @@ spec:
       k8s_secret_name: kubeauth-secrets
       kubeauth_approle: kubeauth
       k8s_host: https://192.168.15.10:16443
-      k8s_audiences: https://kuberbetes.default.svc
+      k8s_audiences: https://kubernetes.default.svc.cluster.local
       cert_issuer_vault_path: bede-apps-com_intermediate/sign/bede-apps-com_intermediate-dot-com
       domain: bede-apps.com
       cert_issuer_name: vault-issuer
