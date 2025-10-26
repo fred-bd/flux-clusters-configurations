@@ -17,16 +17,16 @@ spec:
   postBuild:
     substitute:
       ip_address_range: 192.168.15.15-192.168.15.20
-      vault_address: http://80.0.0.1:8200
+      vault_address: http://192.168.15.10:8200
       cluster_name: note-local
       k8s_secret_name: kubeauth-secrets
       kubeauth_approle: kubeauth
-      k8s_host: https://80.0.0.2:16443
-      k8s_audiences: https://80.0.0.2
+      k8s_host: https://192.168.15.10:16443
+      k8s_audiences: https://kuberbetes.default.svc
       cert_issuer_vault_path: bede-apps-com_intermediate/sign/bede-apps-com_intermediate-dot-com
       domain: bede-apps.com
       cert_issuer_name: vault-issuer
-      helm_repo_address: http://80.0.0.1:8082
+      helm_repo_address: http://192.168.15.10:8082
       helm_repo_secret_name: helm-repo-credentials
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
