@@ -16,7 +16,7 @@ spec:
   #   - name: coredns-change
   postBuild:
     substitute:
-      ip_address_range: 192.168.15.10/24
+      ip_address_range: 172.29.169.112-172.29.169.120
       vault_address: http://80.0.0.1:8200
       cluster_name: note-local
       k8s_secret_name: kubeauth-secrets
