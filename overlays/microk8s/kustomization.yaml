@@ -17,3 +17,13 @@ patches:
         postBuild:
           substitute:
             istio_platform: microk8s
+
+  - target:
+      kind: Kustomization
+      labelSelector: kustom.component=testing
+    patch: |
+      apiVersion: v1
+      kind: all
+      metadata:
+        name: all
+      $patch: delete
